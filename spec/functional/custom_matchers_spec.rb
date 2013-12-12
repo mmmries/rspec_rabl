@@ -27,6 +27,18 @@ describe "Customer Matchers" do
     it{ should_not render(:password) }
   end
 
+  describe "rootless_index.rabl" do
+    rabl_data(:root => false, :object_root => 'user'){ [user] }
+    it{ should render(:guid) }
+    it{ should_not render(:password) }
+  end
+
+  describe "bare_index.rabl" do
+    rabl_data(:root => false, :object_root => false){ [user] }
+    it{ should render(:guid) }
+    it{ should_not render(:password) }
+  end
+
   describe "nested/test.rabl" do
     rabl_data(:root => 'test'){ user }
     it{ should render(:guid) }
