@@ -5,6 +5,8 @@ require 'rabl'
 require 'rspec'
 require 'rspec_rabl'
 
+require 'support/user_context'
+
 RSpec.configure do |c|
   c.order = :rand
   c.color = :true

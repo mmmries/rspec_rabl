@@ -1,20 +1,15 @@
 require 'spec_helper'
 
 describe "User Views" do
-  let(:user){ double('user',
-    guid: 'abc',
-    first_name: 'gob',
-    last_name: 'bluth',
-    email: 'gob@bluth.com')
-  }
+  include_context "user_context"
   rabl_data{ user }
 
-  describe "user.rabl", :rabl => true do
-    it "should render the template" do
+  describe "user.rabl" do
+    it "should make the rendered template available" do
       rendered_template.should == '{"user":{"guid":"abc","first_name":"gob","last_name":"bluth","email":"gob@bluth.com"}}'
     end
 
-    it "should render the template parse it" do
+    it "should make the parsed template available" do
       parsed_json.should == {
         'user' => {
           'guid' => user.guid,
@@ -24,14 +19,12 @@ describe "User Views" do
         }
       }
     end
-
-    it{ should be_a(Rabl::Renderer) }
   end
 
   describe "test.rabl" do
     rabl_config( {:view_paths => 'spec/fixtures/nested'} )
 
-    it "should render the test.rabl template" do
+    it "should allow us to override the Rabl config" do
       parsed_json.should == {'test' => {'guid' => user.guid}}
     end
   end

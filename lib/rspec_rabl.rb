@@ -9,3 +9,4 @@ module RSpec
 end
 require "rspec_rabl/version"
 require 'rspec/rabl/example_group'
+require 'rspec/rabl/helpers'
