@@ -1,7 +1,8 @@
 module RSpec
   module Rabl
     module Helpers
-      def rabl_data(&block)
+      def rabl_data(opts = {},&block)
+        let(:_rabl_opts){ opts }
         let(:_rabl_data, &block)
       end
 

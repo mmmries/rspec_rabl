@@ -30,6 +30,10 @@ module RSpec
         nil
       end
 
+      def _rabl_opts
+        {}
+      end
+
       def _rabl_template
         example.metadata[:example_group][:description]
       end
