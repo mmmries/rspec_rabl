@@ -1,3 +1,8 @@
+require 'rspec'
+RSpec.configure do |c|
+  c.add_setting :rabl_configuration
+end
+
 module RSpec
   module Rabl
   end
