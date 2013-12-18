@@ -29,10 +29,19 @@ describe "Customer Matchers" do
 
   describe "index.rabl" do
     rabl_data(:root => 'foobar'){ [user] }
-    it "should give a meaningful error message" do
+    it "should give an error specific for missing root" do
       expect{
         subject.should render_attribute(:guid)
-      }.to raise_error(Rspec::Rabl::Error, /missing root/)
+      }.to raise_error(RSpec::Rabl::Error, /missing root/)
+    end
+  end
+
+  describe "index.rabl" do
+    rabl_data(:root => 'users', :object_root => false){ [user] }
+    it "should give an error specific for incorrect object_root" do
+      expect{
+        subject.should render_attribute(:guid)
+      }.to raise_error(RSpec::Rabl::Error, /missing object_root/)
     end
   end
 
