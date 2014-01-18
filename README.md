@@ -34,8 +34,6 @@ end
 But most of the time you want to check some pretty common things like:
 
 ```ruby
-require 'spec_helper
-
 describe "budgets/show.rabl" do
   let(:budget) { Budget.new }
   rabl_data(:root => 'budget') { budget }
