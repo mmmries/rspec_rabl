@@ -5,19 +5,19 @@ describe "User Views" do
   rabl_data{ user }
 
   describe "user.rabl" do
-    it "should make the rendered template available" do
-      rendered_template.should == '{"user":{"guid":"abc","first_name":"gob","last_name":"bluth","email":"gob@bluth.com"}}'
+    it "makes the rendered template available" do
+      expect(rendered_template).to eq '{"user":{"guid":"abc","first_name":"gob","last_name":"bluth","email":"gob@bluth.com"}}'
     end
 
-    it "should make the parsed template available" do
-      parsed_json.should == {
+    it "makes the parsed template available" do
+      expect(parsed_json).to eq({
         'user' => {
           'guid' => user.guid,
           'first_name' => user.first_name,
           'last_name' => user.last_name,
           'email' => user.email,
         }
-      }
+      })
     end
   end
 
@@ -25,7 +25,7 @@ describe "User Views" do
     rabl_config( {:view_paths => 'spec/fixtures/nested'} )
 
     it "should allow us to override the Rabl config" do
-      parsed_json.should == {'test' => {'guid' => user.guid}}
+      expect(parsed_json).to eq({'test' => {'guid' => user.guid}})
     end
   end
 end
