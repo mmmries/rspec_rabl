@@ -27,6 +27,24 @@ describe "Customer Matchers" do
     it{ should_not render_attribute(:password) }
   end
 
+  describe "index.rabl" do
+    rabl_data(:root => 'foobar'){ [user] }
+    it "should give an error specific for missing root" do
+      expect{
+        subject.should render_attribute(:guid)
+      }.to raise_error(RSpec::Rabl::Error, /missing root/i)
+    end
+  end
+
+  describe "index.rabl" do
+    rabl_data(:root => 'users', :object_root => "player"){ [user] }
+    it "should give an error specific for incorrect object_root" do
+      expect{
+        subject.should render_attribute(:guid)
+      }.to raise_error(RSpec::Rabl::Error, /missing object root/i)
+    end
+  end
+
   describe "rootless_index.rabl" do
     rabl_data(:root => false, :object_root => 'user'){ [user] }
     it{ should render_attribute(:guid) }
