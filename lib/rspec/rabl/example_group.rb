@@ -35,7 +35,7 @@ module RSpec
       end
 
       def _rabl_template
-        example.metadata[:example_group][:description]
+        RSpec.current_example.metadata[:example_group][:description]
       end
     end
   end
