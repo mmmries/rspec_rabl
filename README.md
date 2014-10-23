@@ -38,16 +38,16 @@ describe "budgets/show.rabl" do
   let(:budget) { Budget.new }
   rabl_data(:root => 'budget') { budget }
 
-  it { should render_attribute(:amount) }                        # parsed_json['budget']['amount'] == budget.amount
-  it { should render_attribute(:amount).with(:friendly_amount) } # parsed_json['budget']['amount'] == budget.friendly_amount
-  it { should render_attribute(:amount).with_value("45.00") }    # parsed_json['budget']['amount'] == "45.00"
+  it { expect(subject).to render_attribute(:amount) }                        # parsed_json['budget']['amount'] == budget.amount
+  it { expect(subject).to render_attribute(:amount).with(:friendly_amount) } # parsed_json['budget']['amount'] == budget.friendly_amount
+  it { expect(subject).to render_attribute(:amount).with_value("45.00") }    # parsed_json['budget']['amount'] == "45.00"
 end
 
 describe "budgets/index.rabl" do
   let(:budgets) { [ Budget.new ] }
   rabl_data(:root => 'budgets', :object_root => 'budget') { budgets }
 
-  it { should render_attribute(:amount) }                       # parsed_json['budgets'].first['budget']['amount'] == budgets.first.amount
+  it { expect(subject).to render_attribute(:amount) }                       # parsed_json['budgets'].first['budget']['amount'] == budgets.first.amount
 end
 ```
 
