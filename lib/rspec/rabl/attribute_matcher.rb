@@ -70,14 +70,22 @@ module RSpec
 
       def parse_collection_object
         data = parsed
-        data = data[opts[:root]] if opts[:root]
+        if opts[:root]
+          data = data.fetch(opts[:root]){ raise ::RSpec::Rabl::Error.new("Missing Root #{opts[:root]}") }
+        end
         data = data.first
-        data = data[opts[:object_root]] if opts[:object_root]
+        if opts[:object_root]
+          data = data.fetch(opts[:object_root]){ raise ::RSpec::Rabl::Error.new("Missing Object Root #{opts[:object_root]}") }
+        end
         data
       end
 
       def parse_object
-        opts[:root] ? parsed[opts[:root]] : parsed
+        if opts[:root]
+          parsed.fetch(opts[:root]){ raise ::RSpec::Rabl::Error.new("Missing Object Root") }
+        else
+          parsed
+        end
       end
 
       def parsed
