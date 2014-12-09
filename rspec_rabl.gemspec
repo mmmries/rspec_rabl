@@ -10,7 +10,7 @@ Gem::Specification.new do |spec|
   spec.email         = ["michael@riesd.com"]
   spec.description   = "Provides a more declarative form of view testing for users of rabl"
   spec.summary       = spec.description
-  spec.homepage      = ""
+  spec.homepage      = "https://github.com/mmmries/rspec_rabl"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files`.split($/)
