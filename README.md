@@ -1,3 +1,6 @@
+[![Code Climate](https://codeclimate.com/github/mmmries/rspec_rabl/badges/gpa.svg)](https://codeclimate.com/github/mmmries/rspec_rabl)
+[![Dependency Status](https://gemnasium.com/mmmries/docx_templater.svg)](https://gemnasium.com/mmmries/docx_templater)
+
 # RspecRabl
 
 A collection of convenient helpers for writing view specs with rabl templates.
