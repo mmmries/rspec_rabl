@@ -1,2 +1,2 @@
-object @user => 'test'
+object @user => :test
 attributes :guid
