@@ -9,7 +9,6 @@ require 'support/user_context'
 
 RSpec.configure do |c|
   c.order = :rand
-  c.color = :true
   c.include RSpec::Rabl::ExampleGroup
   c.rabl_configuration = {:view_paths => 'spec/fixtures'}
 end

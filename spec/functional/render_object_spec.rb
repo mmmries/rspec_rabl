@@ -1,5 +1,3 @@
-require 'spec_helper'
-
 describe "User Views" do
   include_context "user_context"
   rabl_data{ user }

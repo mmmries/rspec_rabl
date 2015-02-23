@@ -1,5 +1,3 @@
-require 'spec_helper'
-
 describe "Customer Matchers" do
   include_context "user_context"
 
