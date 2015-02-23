@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/mmmries/rspec_rabl.svg)](https://travis-ci.org/mmmries/rspec_rabl)
+[![Build Status](https://travis-ci.org/mmmries/rspec_rabl.svg?branch=master)](https://travis-ci.org/mmmries/rspec_rabl)
 [![Code Climate](https://codeclimate.com/github/mmmries/rspec_rabl/badges/gpa.svg)](https://codeclimate.com/github/mmmries/rspec_rabl)
 [![Dependency Status](https://gemnasium.com/mmmries/rspec_rabl.svg)](https://gemnasium.com/mmmries/rspec_rabl)
 
