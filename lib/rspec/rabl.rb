@@ -1,5 +1,5 @@
 require 'rspec'
-require "rspec_rabl/version"
+require "rspec/rabl/version"
 require "rspec/rabl/error"
 
 # helpers to access the rendered template and parsed template

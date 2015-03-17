@@ -1,3 +1,5 @@
-module RspecRabl
-  VERSION = "0.0.4"
+module RSpec
+  module Rabl
+    VERSION = "0.0.4"
+  end
 end
