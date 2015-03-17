@@ -55,6 +55,16 @@ describe "budgets/index.rabl" do
 end
 ```
 
+If you don't want to specify the template you are testing via the describe/context string you can specify the template like this:
+
+```ruby
+describe "Users are rendered with the humorous attribute" do
+  rabl_template { "users/show.rabl" }
+  rabl_data(:root => 'user') { user }
+
+  specify { expect(subject).to render_attribute(:humorous).with_value("not really") }
+end
+
 ## Configuration
 
 The easiest way to configure this is simple
