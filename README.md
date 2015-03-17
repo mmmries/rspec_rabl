@@ -10,11 +10,11 @@ A collection of convenient helpers for writing view specs with rabl templates.
 
 Add this line to your application's Gemfile:
 
-    gem 'rspec_rabl'
+    gem 'rspec-rabl'
 
 ## Usage
 
-First make sure you configure rspec\_rabl in your spec\_helper.rb file (see Configuration below).
+First make sure you configure rspec-rabl in your spec\_helper.rb file (see Configuration below).
 
 Now your templates can be rendered with whatever data you like for testing:
 
@@ -64,13 +64,14 @@ describe "Users are rendered with the humorous attribute" do
 
   specify { expect(subject).to render_attribute(:humorous).with_value("not really") }
 end
+```
 
 ## Configuration
 
 The easiest way to configure this is simple
 
 ```ruby
-require 'rspec/rails_rabl'
+require 'rspec/rabl/rails'
 ```
 
 For more detailed configuration just look at that file to see what configurations it is making.
