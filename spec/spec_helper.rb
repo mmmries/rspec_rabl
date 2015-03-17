@@ -3,7 +3,7 @@ require 'json'
 require 'pry-nav'
 require 'rabl'
 require 'rspec'
-require 'rspec_rabl'
+require 'rspec/rabl'
 
 require 'support/user_context'
 
