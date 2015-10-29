@@ -11,7 +11,7 @@ module RSpec
       end
 
       def failure_message
-        "expected #{parsed} to render #{rendered_attribute} = #{expected_value}"
+        "expected #{expected_value.inspect} in #{attribute_path}\n  got #{rendered_value.inspect}"
       end
 
       def matches?(subject)
@@ -32,6 +32,15 @@ module RSpec
       private
       attr_reader :rendered_attribute, :subject, :opts
 
+      def attribute_path
+        @attribute_path ||= begin
+          path = ""
+          path << "[\"#{opts[:root]}\"]" if opts[:root]
+          path << "[\"#{opts[:object_root]}\"]" if opts[:object_root]
+          path << "[\"#{rendered_attribute}\"]"
+        end
+      end
+
       def model_attribute
         @model_attribute ||= rendered_attribute
       end
@@ -49,7 +58,7 @@ module RSpec
       end
 
       def attribute_rendered?
-        parsed_object.has_key?(rendered_attribute.to_s)
+        parsed_object.key?(rendered_attribute.to_s)
       end
 
       def get_attribute_from_rendered_object
