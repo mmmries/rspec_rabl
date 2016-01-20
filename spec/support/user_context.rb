@@ -5,6 +5,7 @@ shared_context "user_context" do
     last_name: 'bluth',
     email: 'gob@bluth.com',
     password: 'very secret',
-    is_deleted: false
+    is_deleted: false,
+    nil_value: nil,
   )}
 end

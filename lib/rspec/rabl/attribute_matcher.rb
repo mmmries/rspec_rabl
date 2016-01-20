@@ -16,7 +16,7 @@ module RSpec
 
       def matches?(subject)
         @subject = subject
-        attribute_rendered? && rendered_value == expected_value
+        attribute_rendered? && (!expected_value_set || rendered_value == expected_value)
       end
 
       def with(model_attribute)
@@ -25,12 +25,13 @@ module RSpec
       end
 
       def with_value(expected_value)
+        @expected_value_set = true
         @expected_value = expected_value
         self
       end
 
       private
-      attr_reader :rendered_attribute, :subject, :opts
+      attr_reader :rendered_attribute, :subject, :opts, :expected_value_set
 
       def attribute_path
         @attribute_path ||= begin
@@ -45,8 +46,10 @@ module RSpec
         @model_attribute ||= rendered_attribute
       end
 
+      # The expected value may be set to nil or false. Retrieving the value from the rendered object
+      # will then fail if the attribute is calculated from a node
       def expected_value
-        @expected_value ||= @expected_value.nil? ? get_attribute_from_rendered_object : @expected_value
+        @expected_value ||= @expected_value_set ? @expected_value : get_attribute_from_rendered_object
       end
 
       def rendered_value
