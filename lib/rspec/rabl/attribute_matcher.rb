@@ -46,7 +46,7 @@ module RSpec
       end
 
       def expected_value
-        @expected_value ||= get_attribute_from_rendered_object
+        @expected_value ||= @expected_value.nil? ? get_attribute_from_rendered_object : @expected_value
       end
 
       def rendered_value

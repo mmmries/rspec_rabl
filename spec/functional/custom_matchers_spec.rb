@@ -14,6 +14,7 @@ describe "Customer Matchers" do
     rabl_data(:root => 'user'){ user }
     it{ expect(subject).to render_attribute(:id).with(:guid) }
     it{ expect(subject).to render_attribute(:team).with_value('Gorby Puff') }
+    it{ expect(subject).to render_attribute(:feed_is_deleted).with_value(false) }
   end
 
   describe "index.rabl" do
