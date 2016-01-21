@@ -6,11 +6,12 @@ describe "Error Messages" do
       example = it{ expect(subject).to render_attribute(:guid).with_value("Imma derp derp") }
     end
     group.run
-    lines = RSpec::Core::Notifications::FailedExampleNotification.new(example).message_lines
+    lines = RSpec::Core::Notifications::FailedExampleNotification.new(example).message_lines.join("\n")
 
-    expect(lines[0]).to include("with_value(\"Imma derp derp\")")
-    expect(lines[1]).to include("  expected \"Imma derp derp\" in [\"guid\"]")
-    expect(lines[2]).to include("    got nil")
+    expect(lines).to include("with_value(")
+    expect(lines).to include("Imma derp derp")
+    expect(lines).to include("  expected \"Imma derp derp\" in [\"guid\"]")
+    expect(lines).to include("    got nil")
   end
 
   it "renders a helpful error message for root and object_root" do
@@ -21,11 +22,12 @@ describe "Error Messages" do
       example = it{ expect(subject).to render_attribute(:guid).with_value("Imma derp derp") }
     end
     group.run
-    lines = RSpec::Core::Notifications::FailedExampleNotification.new(example).message_lines
+    lines = RSpec::Core::Notifications::FailedExampleNotification.new(example).message_lines.join("\n")
 
-    expect(lines[0]).to include("with_value(\"Imma derp derp\")")
-    expect(lines[1]).to include("  expected \"Imma derp derp\" in [\"user\"][\"guid\"]")
-    expect(lines[2]).to include("    got \"abc\"")
+    expect(lines).to include("with_value(")
+    expect(lines).to include("Imma derp derp")
+    expect(lines).to include("  expected \"Imma derp derp\" in [\"user\"][\"guid\"]")
+    expect(lines).to include("    got \"abc\"")
   end
 
   it "renders a helpful error message for root and object_root" do
@@ -36,10 +38,11 @@ describe "Error Messages" do
       example = it{ expect(subject).to render_attribute(:guid).with_value("Imma derp derp") }
     end
     group.run
-    lines = RSpec::Core::Notifications::FailedExampleNotification.new(example).message_lines
+    lines = RSpec::Core::Notifications::FailedExampleNotification.new(example).message_lines.join("\n")
 
-    expect(lines[0]).to include("with_value(\"Imma derp derp\")")
-    expect(lines[1]).to include("  expected \"Imma derp derp\" in [\"users\"][\"user\"][\"guid\"]")
-    expect(lines[2]).to include("    got \"abc\"")
+    expect(lines).to include("with_value(")
+    expect(lines).to include("Imma derp derp")
+    expect(lines).to include("  expected \"Imma derp derp\" in [\"users\"][\"user\"][\"guid\"]")
+    expect(lines).to include("    got \"abc\"")
   end
 end
