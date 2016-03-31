@@ -11,12 +11,21 @@ module RSpec
       end
 
       def failure_message
-        "expected #{expected_value.inspect} in #{attribute_path}\n  got #{rendered_value.inspect}"
+        if implicit_nil_value?
+          "nil value when testing.\n expected #{expected_value.inspect} in #{attribute_path}\n  got #{rendered_value.inspect}\n If you want to test for a nil value, please use `with_value(nil)`"
+        else
+          "expected #{expected_value.inspect} in #{attribute_path}\n  got #{rendered_value.inspect}"
+        end
       end
 
       def matches?(subject)
         @subject = subject
-        attribute_rendered? && (!expected_value_set || rendered_value == expected_value)
+        attribute_rendered? && (!expected_value_set || rendered_value == expected_value) && !implicit_nil_value?
+      end
+
+      def implicit_nil_value?
+        return false if expected_value_set
+        rendered_value.nil? || expected_value.nil?
       end
 
       def with(model_attribute)
