@@ -6,6 +6,7 @@ require 'rspec'
 require 'rspec/rabl'
 
 require 'support/user_context'
+require 'support/renderer_scope_helper'
 
 RSpec.configure do |c|
   c.order = :rand
