@@ -14,6 +14,7 @@ module RSpec
           _rabl_template.gsub('.rabl',''),
           _rabl_data,
           :view_path => _rabl_config[:view_paths],
+          :scope     => _rabl_config[:scope],
         )
       end
 

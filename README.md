@@ -78,6 +78,27 @@ require 'rspec/rabl/rails'
 
 For more detailed configuration just look at that file to see what configurations it is making.
 
+Additionally, there are two config attributes which can be specified using `rabl_config`:
+
+`scope` is the rendering context which is passed to create the underlying Rabl::Renderer instance for an example group. If your rabl template is using, for example, view helpers in Rails but your spec is raising a `NoMethodError`, then you probably want to pass in a scope which includes that helper.
+
+```ruby
+describe "Users which use a Helper to transform data for presentation" do
+  class ScopeWithUsersHelper
+    include Singleton
+    include UsersHelper # could have a method which formats an email address for use below
+  end
+
+  rabl_config(:scope => ScopeWithUsersHelper.instance)
+  rabl_template { "users/show.rabl" }
+  rabl_data(:root => 'user') { user }
+
+  specify { expect(subject).to render_attribute(:formatted_email).with_value('"Kung Fury" <thechosenone@example.com>') }
+end
+```
+
+`view_paths` instructs the Rabl::Renderer where to look for its rabl templates for the purpose of an example group.
+
 ## Contributing
 
 1. Fork it
