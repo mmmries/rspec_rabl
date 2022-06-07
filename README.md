@@ -2,6 +2,11 @@
 [![Code Climate](https://codeclimate.com/github/mmmries/rspec_rabl/badges/gpa.svg)](https://codeclimate.com/github/mmmries/rspec_rabl)
 [![Dependency Status](https://gemnasium.com/mmmries/rspec_rabl.svg)](https://gemnasium.com/mmmries/rspec_rabl)
 
+# ⚠️ No Longer Supported
+
+I haven't needed to use this library in a long time and I'm no longer maintaining it to keep it up-to-date with the ruby community.
+I'm keeping it here as an archive for future reference.
+
 # RspecRabl
 
 A collection of convenient helpers for writing view specs with rabl templates.
